@@ -214,6 +214,141 @@ Constant folding memungkinkan compiler menyederhanakan ekspresi konstan, sedangk
 
 Pemahaman ini membantu menjelaskan perbedaan antara compilation, optimization, dan execution dalam Python.
 
+## 01.1.3 — Python Syntax Fundamentals
+
+### A. Konsep Dasar
+Python syntax adalah seperangkat aturan yang menentukan bagaimana
+kode Python harus ditulis agar dapat dipahami oleh interpreter.
+
+Konsep dasar yang telah dipelajari:
+
+1. **Syntax**: Aturan penulisan kode Python.
+2. **Indentation**: Penggunaan spasi untuk menentukan blok kode,
+   misalnya pada statement `if`.
+3. **Variable Assignment**: Mengikat nama variabel ke suatu nilai
+   menggunakan operator `=`.
+4. **Variable Reassignment**: Mengikat ulang nama variabel ke nilai
+   yang baru.
+5. **Comments**: Catatan pada source code menggunakan simbol `#`
+   yang tidak dieksekusi sebagai instruksi Python.
+6. **SyntaxError**: Error ketika kode melanggar aturan syntax Python.
+7. **Runtime Error**: Error yang terjadi ketika program sedang
+   dieksekusi, contohnya `ZeroDivisionError`.
+
+### B. Praktik dan Hasil Pengujian
+
+#### 1. Variable Assignment dan Reassignment
+
+```python
+nilai = 5
+print("Nilai awal:", nilai)
+
+nilai = nilai + 10
+print("Nilai setelah reassignment:", nilai)
+```
+
+Output:
+
+```text
+Nilai awal: 5
+Nilai setelah reassignment: 15
+```
+
+**Hasil analisis:**
+
+Variabel `nilai` awalnya mengacu pada integer `5`.
+Statement `nilai = nilai + 10` menghitung nilai baru,
+kemudian mengikat ulang variabel `nilai` ke integer `15`.
+
+#### 2. Python Comments
+
+```python
+angka = 20
+# angka = 50
+
+print("Nilai angka:", angka)
+
+# print("Baris ini tidak dieksekusi")
+```
+
+Output:
+
+```text
+Nilai angka: 20
+```
+
+**Hasil analisis:**
+
+Baris yang diawali `#` merupakan komentar dan tidak
+dieksekusi oleh Python. Oleh karena itu, nilai `angka`
+tetap `20`.
+
+#### 3. Python Indentation
+
+```python
+angka = 10
+
+if angka > 5:
+    print("Kondisi pertama terpenuhi")
+    print("Masih di dalam if")
+
+print("Di luar if")
+```
+
+Output:
+
+```text
+Kondisi pertama terpenuhi
+Masih di dalam if
+Di luar if
+```
+
+**Hasil analisis:**
+
+Python menggunakan indentation untuk menentukan blok kode.
+
+Ketika kondisi `if` bernilai `True`, statement di dalam blok
+dieksekusi. Statement di luar blok tetap dieksekusi.
+
+Jika kondisi bernilai `False`, statement di dalam blok
+dilewati, tetapi statement di luar blok tetap dieksekusi.
+
+#### 4. Syntax Error dan Runtime Error
+
+**Syntax Error**
+
+```python
+if True:
+print("Hello")
+```
+
+Kode tersebut menghasilkan `IndentationError` karena
+statement di dalam blok `if` tidak memiliki indentation.
+
+**Runtime Error**
+
+```python
+print("Program dimulai")
+hasil = 10 / 0
+print("Program selesai")
+```
+
+Output:
+
+```text
+Program dimulai
+ZeroDivisionError: division by zero
+```
+
+**Hasil analisis:**
+
+- `SyntaxError` terjadi ketika kode melanggar aturan syntax Python.
+- `IndentationError` merupakan turunan dari `SyntaxError`.
+- `ZeroDivisionError` terjadi ketika program mencoba melakukan
+  pembagian dengan nol.
+- Pada runtime error yang tidak ditangani, statement sebelum
+  error dapat dieksekusi, sedangkan statement setelah error
+  tidak dijalankan.
 
 #### 1.2.1 Compilation and Interpretation
 
