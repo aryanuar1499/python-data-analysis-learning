@@ -114,3 +114,37 @@ hasil_b = str(stok_awal) + str(stok_masuk)
 print(hasil_a)
 print(hasil_b)
 print(type(hasil_b))
+
+# Experiment: Boolean Conversion — Numeric Truthiness
+
+nilai_a = 0
+nilai_b = 25
+nilai_c = -10
+nilai_d = 0.0
+
+print(bool(nilai_a))
+print(bool(nilai_b))
+print(bool(nilai_c))
+print(bool(nilai_d))
+
+# Experiment: Boolean Conversion — String Truthiness
+
+teks_a = ""
+teks_b = "0"
+teks_c = "False"
+teks_d = " "
+
+print(bool(teks_a))
+print(bool(teks_b))
+print(bool(teks_c))
+print(bool(teks_d))
+
+# Experiment: Boolean Truthiness vs Business Logic
+
+stok_a = 0
+stok_b = -5
+stok_c = 20
+
+print(bool(stok_a), stok_a > 0)
+print(bool(stok_b), stok_b > 0)
+print(bool(stok_c), stok_c > 0)
