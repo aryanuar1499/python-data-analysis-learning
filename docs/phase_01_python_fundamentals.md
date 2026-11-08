@@ -959,6 +959,246 @@ Boolean truthiness and comparison operations serve different purposes. Business 
 
 **Lesson Status: COMPLETED — Pending GitHub Commit**
 
+---
+
+## Lesson 01.1.5 — Python Operators and Expressions
+
+**Status:** IN PROGRESS
+**Learning Method:** Theory → Intensive Practice → Exercises → Evaluation → Documentation
+
+### 01.1.5.1 — Operators and Operands
+
+**Status:** COMPLETED
+
+#### Theory Summary
+
+**Operator** adalah simbol atau kata kunci (*keyword*) yang digunakan untuk melakukan suatu operasi terhadap satu atau lebih operand.
+
+**Operand** adalah nilai (*value*), variabel (*variable*), atau ekspresi (*expression*) yang menjadi objek dari operasi yang dilakukan oleh operator.
+
+**Expression** adalah kombinasi nilai, variabel, dan operator yang dievaluasi oleh Python untuk menghasilkan suatu nilai (*result*).
+
+#### Example
+
+```python
+a = 12
+b = 4
+
+result = a / b
+print(result)
+```
+
+#### Code Example
+
+```python
+a = 12
+b = 4
+
+result = a / b
+print(result)
+print(type(result))
+```
+
+#### Expected Output
+
+```text
+3.0
+<class 'float'>
+```
+
+#### Key Takeaways
+
+- Operator `/` digunakan untuk melakukan True Division.
+- Variabel `a` dan `b` merupakan operand dalam ekspresi `a / b`.
+- Ekspresi `a / b` dievaluasi oleh Python untuk menghasilkan suatu nilai.
+- Pada contoh tersebut, hasil pembagian adalah `3.0` dengan tipe data `float`, meskipun kedua operand bertipe `int`.
+
+### 01.1.5.2 — Floor Division (`//`)
+
+**Status:** COMPLETED
+
+#### Theory Summary
+
+**Floor Division** adalah operasi pembagian menggunakan operator `//` yang menghasilkan hasil bagi dengan pembulatan ke bawah (*floor*), yaitu menuju negatif tak hingga (*negative infinity*).
+
+Floor Division berbeda dengan **True Division (`/`)** dan **Truncation (`int()`)**.
+
+- **True Division (`/`)** menghasilkan nilai pembagian dalam bentuk `float` untuk operand numerik biasa.
+- **Floor Division (`//`)** menghasilkan hasil pembagian yang dibulatkan ke bawah.
+- **Truncation (`int()`)** menghilangkan bagian desimal dari nilai numerik hingga mendekati nol (*toward zero*).
+
+Perbedaan Floor Division dan Truncation menjadi penting ketika hasil pembagian bernilai negatif.
+
+#### Experiment — Floor Division vs Truncation
+
+**Objective:** Memahami perbedaan hasil True Division, Floor Division, dan Truncation ketika menggunakan bilangan negatif.
+
+**Code:**
+
+```python
+a = -11
+b = 4
+
+print(a / b)
+print(a // b)
+print(int(a / b))
+```
+
+**Validated Output:**
+
+```text
+-2.75
+-3
+-2
+```
+
+#### Experiment Findings
+
+1. True Division (`/`) menghasilkan `-2.75` dengan tipe data `float`.
+2. Floor Division (`//`) menghasilkan `-3` karena Python melakukan pembulatan ke bawah menuju negatif tak hingga.
+3. Truncation menggunakan `int()` menghasilkan `-2` karena bagian desimal dihilangkan menuju nol.
+4. Floor Division dan Truncation dapat menghasilkan nilai berbeda ketika hasil pembagian bernilai negatif.
+
+**Validation Status:** PASSED
+
+### 01.1.5.3 — Modulo Operator (`%`)
+
+**Status:** COMPLETED
+
+#### Theory Summary
+
+**Modulo Operator (`%`)** adalah operator aritmetika Python yang digunakan untuk memperoleh sisa hasil pembagian (*remainder*) dari dua operand.
+
+Modulo memiliki hubungan matematis dengan **Floor Division (`//`)**, yang dapat dinyatakan melalui persamaan:
+
+`a = (a // b) * b + (a % b)`
+
+Keterangan:
+- `a` adalah bilangan yang dibagi (*dividend*).
+- `b` adalah bilangan pembagi (*divisor*).
+- `a // b` adalah hasil Floor Division (*quotient*).
+- `a % b` adalah sisa pembagian (*remainder*).
+
+Dalam Python, ketika hasil Modulo tidak sama dengan nol, tanda hasilnya mengikuti tanda pembagi (*divisor*).
+
+Dengan demikian, Modulo dapat menghasilkan nilai positif maupun negatif, bergantung pada tanda pembaginya.
+
+#### Experiment 03 — Positive Modulo
+
+**Objective:** Memahami hubungan antara Floor Division (`//`) dan Modulo (`%`) menggunakan bilangan positif.
+
+**Code:**
+
+```python
+a = 29
+b = 8
+
+print(a // b)
+print(a % b)
+print((a // b) * b + (a % b))
+```
+
+**Validated Output:**
+
+```text
+3
+5
+29
+```
+
+#### Experiment Findings
+
+1. Floor Division (`29 // 8`) menghasilkan `3`.
+2. Modulo (`29 % 8`) menghasilkan sisa pembagian sebesar `5`.
+3. Persamaan `29 = (3 * 8) + 5` membuktikan hubungan matematis antara Floor Division dan Modulo.
+4. Hasil eksperimen sesuai dengan prediksi dan berhasil divalidasi menggunakan Python Interactive Shell.
+
+**Validation Status:** PASSED
+
+#### Experiment 04 — Negative Modulo
+
+**Objective:** Memahami perilaku Floor Division dan Modulo ketika dividend bernilai negatif.
+
+**Code:**
+
+```python
+a = -23
+b = 6
+
+print(a % b)
+print(a // b)
+print((a // b) * b + (a % b))
+```
+
+**Validated Output:**
+
+```text
+1
+-4
+-23
+```
+
+#### Experiment Findings
+
+1. Floor Division (`-23 // 6`) menghasilkan `-4` karena pembulatan dilakukan menuju negatif tak hingga.
+2. Modulo (`-23 % 6`) menghasilkan `1` karena pembaginya bernilai positif.
+3. Persamaan `-23 = (-4 * 6) + 1` membuktikan hubungan antara Floor Division dan Modulo.
+4. Hasil eksperimen sesuai dengan prediksi dan telah divalidasi melalui Python Interactive Shell.
+
+**Validation Status:** PASSED
+
+#### Final Evaluation — Negative Divisor
+
+**Objective:** Memahami perilaku Floor Division dan Modulo ketika divisor bernilai negatif.
+
+**Code:**
+
+```python
+a = 17
+b = -5
+
+print(a // b)
+print(a % b)
+```
+
+**Predicted Output:**
+
+```text
+-4
+-3
+```
+
+#### Mathematical Verification
+
+Floor Division:
+
+17 / -5 = -3.4
+
+Karena Floor Division menggunakan pembulatan menuju negatif tak hingga:
+
+17 // -5 = -4
+
+Modulo:
+
+17 = (-4 * -5) + (-3)
+
+17 = 20 - 3
+
+17 = 17
+
+#### Evaluation Findings
+
+1. Floor Division menghasilkan `-4` karena menggunakan pembulatan ke bawah.
+2. Modulo menghasilkan `-3` karena pembaginya bernilai negatif.
+3. Hubungan matematis antara Floor Division dan Modulo berhasil dibuktikan.
+4. Prediksi hasil operasi sudah benar berdasarkan evaluasi matematis.
+
+**Mathematical Validation:** PASSED
+
+**Runtime Validation:** PASSED
+
+**Final Evaluation Result:** PASSED
+
 #### 1.2.1 Compilation and Interpretation
 
 #### 1.2.3 Constant Folding vs Variable Addition
