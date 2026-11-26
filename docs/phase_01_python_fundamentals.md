@@ -1199,6 +1199,523 @@ Modulo:
 
 **Final Evaluation Result:** PASSED
 
+---
+
+### 01.1.5.4 — Comparison Operators
+
+#### Learning Objectives
+
+1. Memahami konsep dasar Comparison Operators dalam Python.
+2. Memahami hasil operasi perbandingan dalam bentuk Boolean.
+3. Memahami perbedaan Equality dan Identity.
+4. Menerapkan Comparison Operators dalam aturan bisnis.
+5. Melakukan Boundary Testing terhadap kondisi persediaan.
+6. Mengimplementasikan perbandingan menggunakan Loop, Nested List, dan Nested Loop.
+
+#### Theory Summary
+
+Comparison Operators merupakan operator yang digunakan untuk membandingkan dua operand. Pada perbandingan nilai numerik standar, hasil operasi berupa Boolean (`True` atau `False`).
+
+| Operator | Description |
+|---|---|
+| `==` | Equal to |
+| `!=` | Not equal to |
+| `>` | Greater than |
+| `<` | Less than |
+| `>=` | Greater than or equal to |
+| `<=` | Less than or equal to |
+
+#### Experiment — Equality Operator
+
+**Objective:** Memahami perbandingan kesamaan nilai antara dua operand.
+
+**Code Example:**
+
+```python
+a = 10
+b = 10
+c = 20
+
+print(a == b)
+print(a == c)
+```
+
+**Expected Output:**
+
+```text
+True
+False
+```
+
+#### Experiment Findings
+
+1. Operator `==` membandingkan kesamaan nilai.
+2. Jika kedua operand memiliki nilai yang sama, hasilnya adalah `True`.
+3. Jika kedua operand memiliki nilai berbeda, hasilnya adalah `False`.
+4. Operator `==` berbeda dengan operator assignment (`=`).
+
+#### Experiment — Equality vs Identity
+
+**Objective:** Memahami perbedaan perbandingan nilai dan identitas objek.
+
+**Code Example:**
+
+```python
+a = [10, 20]
+b = [10, 20]
+c = a
+
+print(a == b)
+print(a is b)
+print(a is c)
+```
+
+**Expected Output:**
+
+```text
+True
+False
+True
+```
+
+#### Experiment Findings
+
+1. Operator `==` membandingkan kesamaan nilai atau isi objek.
+2. Operator `is` membandingkan identitas objek.
+3. Dua objek dapat memiliki nilai yang sama tetapi identitas yang berbeda.
+4. Assignment `c = a` membuat kedua variabel merujuk pada objek yang sama.
+5. Operator `is` termasuk Identity Operators, bukan operator perbandingan nilai.
+
+#### Experiment — Not Equal Operator
+
+**Objective:** Memahami perbandingan ketidaksamaan nilai.
+
+**Code Example:**
+
+```python
+a = 10
+b = 20
+
+print(a != b)
+print(a != 10)
+```
+
+**Expected Output:**
+
+```text
+True
+False
+```
+
+#### Experiment Findings
+
+1. Operator `!=` menghasilkan `True` ketika kedua nilai berbeda.
+2. Operator `!=` menghasilkan `False` ketika kedua nilai sama.
+3. Pada perbandingan numerik standar, operator `!=` merupakan kebalikan dari operator `==`.
+
+#### Experiment — Greater Than Operator
+
+**Objective:** Memahami perbandingan nilai yang lebih besar.
+
+**Code Example:**
+
+```python
+current_stock = 25
+minimum_stock = 20
+
+print(current_stock > minimum_stock)
+print(20 > minimum_stock)
+```
+
+**Expected Output:**
+
+```text
+True
+False
+```
+
+#### Experiment Findings
+
+1. Operator `>` menghasilkan `True` apabila operand sebelah kiri lebih besar daripada operand sebelah kanan.
+2. Kondisi dengan nilai yang sama menghasilkan `False`.
+3. Operator ini dapat digunakan untuk membandingkan nilai aktual dengan batas tertentu.
+
+#### Experiment — Less Than Operator
+
+**Objective:** Memahami perbandingan nilai yang lebih kecil.
+
+**Code Example:**
+
+```python
+current_stock = 15
+minimum_stock = 20
+
+print(current_stock < minimum_stock)
+print(20 < minimum_stock)
+```
+
+**Expected Output:**
+
+```text
+True
+False
+```
+
+#### Experiment Findings
+
+1. Operator `<` menghasilkan `True` apabila operand sebelah kiri lebih kecil daripada operand sebelah kanan.
+2. Kondisi dengan nilai yang sama menghasilkan `False`.
+3. Operator ini dapat digunakan untuk mengidentifikasi persediaan di bawah batas minimum.
+
+#### Experiment — Greater Than or Equal To Operator
+
+**Objective:** Memahami perbandingan yang mencakup kondisi lebih besar dan kondisi sama dengan.
+
+**Code Example:**
+
+```python
+minimum_stock = 20
+
+print(19 >= minimum_stock)
+print(20 >= minimum_stock)
+print(21 >= minimum_stock)
+```
+
+**Expected Output:**
+
+```text
+False
+True
+True
+```
+
+#### Experiment Findings
+
+1. Operator `>=` mencakup kondisi lebih besar dan sama dengan.
+2. Nilai yang tepat berada pada batas perbandingan menghasilkan `True`.
+3. Pemilihan operator `>` atau `>=` harus disesuaikan dengan aturan bisnis.
+
+**Runtime Validation:** PASSED
+
+#### Experiment — Less Than or Equal To Operator
+
+**Objective:** Memahami perbandingan yang mencakup kondisi lebih kecil dan kondisi sama dengan.
+
+**Code Example:**
+
+```python
+minimum_stock = 20
+
+print(19 <= minimum_stock)
+print(20 <= minimum_stock)
+print(21 <= minimum_stock)
+```
+
+**Expected Output:**
+
+```text
+True
+True
+False
+```
+
+#### Experiment Findings
+
+1. Operator `<=` mencakup kondisi lebih kecil dan sama dengan.
+2. Nilai yang tepat berada pada batas perbandingan menghasilkan `True`.
+3. Operator ini dapat digunakan untuk mengidentifikasi kebutuhan replenishment ketika persediaan mencapai atau berada di bawah batas minimum.
+
+**Runtime Validation:** PASSED
+
+#### Boolean Result Review
+
+Comparison Operators dapat menghasilkan nilai Boolean yang digunakan sebagai dasar pengambilan keputusan dalam program.
+
+**Code Example:**
+
+```python
+current_stock = 20
+minimum_stock = 20
+
+result = current_stock <= minimum_stock
+
+print(result)
+print(type(result))
+```
+
+**Expected Output:**
+
+```text
+True
+<class 'bool'>
+```
+
+#### Key Takeaways
+
+1. Hasil perbandingan numerik standar merupakan Boolean.
+2. Nilai Boolean dapat disimpan dalam variabel.
+3. Nilai Boolean dapat digunakan untuk merepresentasikan kondisi bisnis.
+4. Comparison Operators merupakan salah satu dasar Conditional Statements dan Logical Expressions.
+
+#### Final Evaluation — Comparison Operators & Business Rules
+
+**Objective:** Menerapkan Comparison Operators untuk mengevaluasi kondisi persediaan berdasarkan aturan bisnis.
+
+**Business Parameters:**
+
+| Parameter | Value |
+|---|---:|
+| Minimum Stock | 20 |
+| Maximum Stock | 100 |
+
+**Business Rules:**
+
+| Business Condition | Expression |
+|---|---|
+| Replenishment Alert | `current_stock <= minimum_stock` |
+| Overstock Alert | `current_stock > maximum_stock` |
+| At Maximum Capacity | `current_stock == maximum_stock` |
+
+**Code:**
+
+```python
+current_stock = 20
+minimum_stock = 20
+maximum_stock = 100
+
+print(current_stock <= minimum_stock)
+print(current_stock > maximum_stock)
+print(current_stock == maximum_stock)
+```
+
+**Expected Output:**
+
+```text
+True
+False
+False
+```
+
+#### Evaluation Findings
+
+1. Replenishment Alert bernilai `True` karena persediaan berada tepat pada batas minimum.
+2. Overstock Alert bernilai `False` karena persediaan tidak melebihi kapasitas maksimum.
+3. At Maximum Capacity bernilai `False` karena persediaan belum mencapai kapasitas maksimum.
+4. Pemilihan Comparison Operators harus didasarkan pada definisi aturan bisnis.
+
+#### Boundary Testing
+
+**Objective:** Menguji ketepatan aturan bisnis pada nilai di bawah, tepat pada, dan di atas batas perbandingan.
+
+**Test Parameters:**
+
+```python
+minimum_stock = 20
+maximum_stock = 100
+
+stock_values = [19, 20, 21, 99, 100, 101]
+```
+
+**Boundary Testing Results:**
+
+| Current Stock | Replenishment Alert | Overstock Alert | At Maximum Capacity |
+|---:|---|---|---|
+| 19 | True | False | False |
+| 20 | True | False | False |
+| 21 | False | False | False |
+| 99 | False | False | False |
+| 100 | False | False | True |
+| 101 | False | True | False |
+
+#### Boundary Testing Findings
+
+1. Replenishment Alert aktif ketika persediaan berada di bawah atau tepat pada batas minimum.
+2. Overstock Alert hanya aktif ketika persediaan melebihi batas maksimum.
+3. At Maximum Capacity hanya aktif ketika persediaan tepat pada batas maksimum.
+4. Persediaan yang berada tepat pada kapasitas maksimum tidak dikategorikan sebagai Overstock.
+5. Boundary Testing membantu mengidentifikasi kesalahan pemilihan operator pada nilai batas.
+
+**Boundary Testing Status:** PASSED
+
+#### Step 22 — Final Runtime Validation
+
+**Objective:** Memvalidasi seluruh kondisi Boundary Testing secara otomatis menggunakan `for` loop.
+
+**Code:**
+
+```python
+minimum_stock = 20
+maximum_stock = 100
+
+stock_values = [19, 20, 21, 99, 100, 101]
+
+for stock in stock_values:
+    print("Current Stock:", stock)
+    print("Replenishment Alert:", stock <= minimum_stock)
+    print("Overstock Alert:", stock > maximum_stock)
+    print("At Maximum Capacity:", stock == maximum_stock)
+    print()
+```
+
+#### Runtime Validation Findings
+
+1. Program melakukan enam iterasi berdasarkan jumlah elemen pada `stock_values`.
+2. Setiap iterasi mengevaluasi tiga aturan bisnis.
+3. Program menghasilkan 18 hasil evaluasi Boolean.
+4. Hasil Runtime Validation sesuai dengan hasil Boundary Testing.
+5. Penggunaan Loop mengurangi kebutuhan penulisan perbandingan secara berulang.
+
+**Runtime Validation Status:** PASSED
+
+#### Additional Runtime Experiment — Nested Loop
+
+**Objective:** Mengembangkan implementasi Comparison Operators menggunakan Nested List dan Nested Loop untuk merepresentasikan beberapa kondisi bisnis secara terstruktur.
+
+**Code:**
+
+```python
+minimum_stock = 20
+maximum_stock = 100
+
+stock_values = [19, 20, 21, 99, 100, 101]
+
+for stock in stock_values:
+    print("Current Stock:", stock)
+
+    alerts = [
+        ["Replenishment Alert", stock <= minimum_stock],
+        ["Overstock Alert", stock > maximum_stock],
+        ["At Maximum Capacity", stock == maximum_stock]
+    ]
+
+    for alert in alerts:
+        print(alert[0] + ":", alert[1])
+        print()
+```
+
+#### Nested List Structure
+
+Setiap elemen pada `alerts` merupakan sebuah List yang terdiri dari dua elemen:
+
+| Index | Description | Data Type |
+|---|---|---|
+| 0 | Alert Name | `str` |
+| 1 | Comparison Result | `bool` |
+
+Sebagai contoh, ketika `stock = 19`, struktur data `alerts` adalah:
+
+```python
+[
+    ["Replenishment Alert", True],
+    ["Overstock Alert", False],
+    ["At Maximum Capacity", False]
+]
+```
+
+#### Nested Loop Execution
+
+1. Outer Loop melakukan iterasi terhadap setiap nilai persediaan.
+2. List `alerts` dibentuk kembali pada setiap iterasi Outer Loop.
+3. Setiap elemen `alerts` menyimpan nama kondisi bisnis dan hasil perbandingan.
+4. Inner Loop melakukan iterasi terhadap setiap elemen `alerts`.
+5. `alert[0]` mengakses nama kondisi bisnis.
+6. `alert[1]` mengakses hasil perbandingan dalam bentuk Boolean.
+
+| Component | Total Iterations |
+|---|---:|
+| Outer Loop | 6 |
+| Inner Loop per Outer Iteration | 3 |
+| Total Inner Loop Iterations | 18 |
+
+#### Additional Experiment — Nested List Indexing and Length
+
+**Objective:** Memahami struktur setiap elemen pada Nested List melalui Indexing dan fungsi `len()`.
+
+**Code:**
+
+```python
+minimum_stock = 20
+maximum_stock = 100
+
+stock_values = [19, 20, 21, 99, 100, 101]
+
+for stock in stock_values:
+    print("Current Stock:", stock)
+
+    alerts = [
+        ["Replenishment Alert", stock <= minimum_stock],
+        ["Overstock Alert", stock > maximum_stock],
+        ["At Maximum Capacity", stock == maximum_stock]
+    ]
+
+    for alert in alerts:
+        print("Alert:", alert)
+        print("Length:", len(alert))
+        print("Index 0:", alert[0])
+        print("Index 1:", alert[1])
+        print()
+```
+
+**Validated Output — Current Stock: 19:**
+
+```text
+Current Stock: 19
+Alert: ['Replenishment Alert', True]
+Length: 2
+Index 0: Replenishment Alert
+Index 1: True
+
+Alert: ['Overstock Alert', False]
+Length: 2
+Index 0: Overstock Alert
+Index 1: False
+
+Alert: ['At Maximum Capacity', False]
+Length: 2
+Index 0: At Maximum Capacity
+Index 1: False
+```
+
+#### Additional Experiment Findings
+
+1. Setiap elemen `alert` memiliki panjang dua elemen.
+2. Index `0` menyimpan nama kondisi bisnis.
+3. Index `1` menyimpan hasil evaluasi Comparison Operators.
+4. Nested Loop memungkinkan program mengakses setiap kondisi bisnis secara terstruktur.
+5. Comparison Operators dapat dikombinasikan dengan List, Nested List, dan Loop untuk mendukung pengolahan data.
+6. Implementasi ini merupakan dasar pengembangan logika analisis persediaan menggunakan Python.
+
+**Additional Runtime Validation:** PASSED
+
+#### Key Learning Outcomes
+
+1. Memahami enam Comparison Operators utama dalam Python.
+2. Memahami perbedaan Equality dan Identity.
+3. Memahami hasil perbandingan dalam bentuk Boolean.
+4. Memahami pentingnya pemilihan operator berdasarkan aturan bisnis.
+5. Memahami konsep Boundary Testing.
+6. Menerapkan Comparison Operators dalam Inventory Business Rules.
+7. Mengimplementasikan Runtime Validation menggunakan Loop.
+8. Mengembangkan struktur evaluasi menggunakan Nested List dan Nested Loop.
+
+#### Final Evaluation Status
+
+| Evaluation Component | Status |
+|---|---|
+| Comparison Operators Theory | PASSED |
+| Practical Exercises | PASSED |
+| Final Evaluation | PASSED |
+| Boundary Testing | PASSED |
+| Final Runtime Validation | PASSED |
+| Additional Runtime Experiment | PASSED |
+| GitHub Documentation | IN PROGRESS |
+
+**Final Evaluation Result:** PASSED
+
+**Lesson Status:** IN PROGRESS — GitHub Documentation
+
+**Next Lesson:** 01.1.5.5 — Logical Operators
+
 #### 1.2.1 Compilation and Interpretation
 
 #### 1.2.3 Constant Folding vs Variable Addition
